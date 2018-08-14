@@ -5,7 +5,7 @@ const createUser = (req, res) => {
   // there should be a user object set on req
   // use that req.user object to create a user and save it to our Mongo instance.
   const { username } = req.body;
-  const { password } = req;
+  const password = req.user;
   const user = new User({ username, password });
   user.save((err,user) => {
     if (err) return res.send(err);
